@@ -37,12 +37,10 @@ class UploadFileController extends Controller
 		} else {
 			
 			$client->authenticate($_GET['code']);
-
-			$drive = new Google_Service_Drive($client);
 			
 			$service = new Google_Service_Drive($client);
 			
-			$folderName = "MCQ";
+			$folderName = "File Upload on User Google Drive";
 			$files = $service->files->listFiles();
 
 			$found = false;
@@ -54,10 +52,10 @@ class UploadFileController extends Controller
 					break;
 				}
 			}
-			
+
 			if ($found == false) {
 				$fileMetadata = new Google_Service_Drive_DriveFile(array(
-				'name' => 'MCQ',
+				'name' => $folderName,
 				'mimeType' => 'application/vnd.google-apps.folder'));
 				$folder = $service->files->create($fileMetadata, array(
 				'fields' => 'id'));
