@@ -10,3 +10,4 @@ Homestead.yaml
 npm-debug.log
 .env
 /app/Http/Controllers/client_secret.json
+/app/Http/Controllers/Screenshot (3).png
